@@ -18,6 +18,7 @@ mix.js("resources/js/app.js", "public/dist/js")
     .js("resources/js/ckeditor-balloon-block.js", "public/dist/js")
     .js("resources/js/ckeditor-document.js", "public/dist/js")
     .js("resources/js/pages/tabulator-users.js", "public/dist/js")
+    .js("resources/js/additional.js", "public/dist/js")
     .css("public/dist/css/_app.css", "public/dist/css/app.css")
     .options({
         processCssUrls: false,

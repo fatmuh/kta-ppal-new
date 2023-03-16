@@ -4,6 +4,7 @@
     <title>Login - KTA PPAL</title>
 @endsection
 
+
 @section('content')
     <div class="container sm:px-10">
         <div class="block grid-cols-2 gap-4 xl:grid">
@@ -50,6 +51,7 @@
             <!-- END: Login Form -->
         </div>
     </div>
+    @include('layout.components.toast')
 @endsection
 
 @section('script')

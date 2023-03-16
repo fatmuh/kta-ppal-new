@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\LoginRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -44,7 +45,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        \Auth::logout();
-        return redirect('login');
+        Auth::logout();
+        return redirect()->route('login.check')->with('success-message', 'Anda berhasil keluar dari sistem!');
     }
 }

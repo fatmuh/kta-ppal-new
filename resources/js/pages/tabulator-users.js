@@ -90,28 +90,14 @@ function TabulatorUser(url) {
                     print: false,
                     download: false,
                     formatter(cell, formatterParams) {
-                        let a =
-                            $(`<div class="flex lg:justify-center items-center">
+                        return `<div class="flex lg:justify-center items-center">
                             <a class="edit flex items-center mr-3" href="javascript:;">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>
-                            <a class="delete flex items-center text-danger" href="javascript:;">
+                            <a class="delete flex items-center text-danger" href="${cell.getData().delete_url}">
                                 <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
                             </a>
-                        </div>`);
-                        $(a)
-                            .find(".edit")
-                            .on("click", function () {
-                                alert("EDIT");
-                            });
-
-                        $(a)
-                            .find(".delete")
-                            .on("click", function () {
-                                alert("DELETE");
-                            });
-
-                        return a[0];
+                        </div>`;
                     },
                 },
 

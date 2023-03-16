@@ -36,6 +36,7 @@ class UserCollection extends JsonResource
             'gender' => $this->gender,
             'color' => $color,
             'active'=> $active,
+            'delete_url' => route('users.delete', $this->id),
         ];
     }
 }

@@ -31,4 +31,13 @@ class UsersController extends Controller
         }
         return redirect()->back()->with('error-message', 'Gagal menambahan User');
     }
+
+    public function delete($id)
+    {
+        list($code, $response) = $this->repository->getDelete($id);
+        if ($code === 200) {
+            return redirect()->back()->with('success-message', $response['message']);
+        }
+        return redirect()->back()->with('error-message',  $response['message']);
+    }
 }

@@ -42145,14 +42145,7 @@ function TabulatorUser(url) {
         print: false,
         download: false,
         formatter: function formatter(cell, formatterParams) {
-          var a = $("<div class=\"flex lg:justify-center items-center\">\n                            <a class=\"edit flex items-center mr-3\" href=\"javascript:;\">\n                                <i data-lucide=\"check-square\" class=\"w-4 h-4 mr-1\"></i> Edit\n                            </a>\n                            <a class=\"delete flex items-center text-danger\" href=\"javascript:;\">\n                                <i data-lucide=\"trash-2\" class=\"w-4 h-4 mr-1\"></i> Delete\n                            </a>\n                        </div>");
-          $(a).find(".edit").on("click", function () {
-            alert("EDIT");
-          });
-          $(a).find(".delete").on("click", function () {
-            alert("DELETE");
-          });
-          return a[0];
+          return "<div class=\"flex lg:justify-center items-center\">\n                            <a class=\"edit flex items-center mr-3\" href=\"javascript:;\">\n                                <i data-lucide=\"check-square\" class=\"w-4 h-4 mr-1\"></i> Edit\n                            </a>\n                            <a class=\"delete flex items-center text-danger\" href=\"".concat(cell.getData().delete_url, "\">\n                                <i data-lucide=\"trash-2\" class=\"w-4 h-4 mr-1\"></i> Delete\n                            </a>\n                        </div>");
         }
       },
       // For print format

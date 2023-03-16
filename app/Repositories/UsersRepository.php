@@ -31,6 +31,11 @@ class UsersRepository
         return UserCollection::collection($data)->additional(['last_page' => $data->lastPage()]);
     }
 
+    public function getUsersById($id)
+    {
+        return User::where('id', $id)->first();
+    }
+
     public function saveUser(UserRequest $request)
     {
 
@@ -52,5 +57,25 @@ class UsersRepository
         DB::commit();
 
         return [200, ['message' => 'Terima kasih telah mambahkan User']];
+    }
+
+    public function getDelete($id)
+    {
+        $data = $this->getUsersById($id);
+
+        if (!$data) {
+            throw new ModelException('Data Tidak Ditemukan!', 404);
+        }
+
+        DB::beginTransaction();
+        try {
+            $data->delete();
+
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new ModelException($e->getMessage(), $e->getCode());
+        }
+        DB::commit();
+        return [200, ['message' => 'Berhasil menghapus data user']];
     }
 }

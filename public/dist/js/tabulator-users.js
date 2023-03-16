@@ -42064,9 +42064,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tabulator_tables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tabulator-tables */ "./node_modules/tabulator-tables/dist/js/tabulator.es2015.js");
 
 
-(function () {
-  "use strict";
-
+function TabulatorUser(url) {
   // Tabulator
   if ($("#tabulator-users").length) {
     // Filter function
@@ -42078,7 +42076,7 @@ __webpack_require__.r(__webpack_exports__);
     }; // On submit filter form
     // Setup Tabulator
     var table = new tabulator_tables__WEBPACK_IMPORTED_MODULE_0__["default"]("#tabulator-users", {
-      ajaxURL: "https://dummy-data.left4code.com",
+      ajaxURL: url,
       ajaxFiltering: true,
       ajaxSorting: true,
       printAsHtml: true,
@@ -42099,45 +42097,43 @@ __webpack_require__.r(__webpack_exports__);
       },
       // For HTML table
       {
-        title: "NAME",
-        minWidth: 200,
+        title: "No",
+        width: 75,
+        responsive: 0,
+        vertAlign: "middle",
+        print: false,
+        download: true,
+        formatter: "rownum"
+      }, {
+        title: "Nama User",
+        minWidth: 150,
         responsive: 0,
         field: "name",
         vertAlign: "middle",
         print: false,
-        download: false,
-        formatter: function formatter(cell, formatterParams) {
-          return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>\n                            <div class=\"text-slate-500 text-xs whitespace-nowrap\">").concat(cell.getData().category, "</div>\n                        </div>");
-        }
+        download: false
       }, {
-        title: "EMAIL",
-        minWidth: 200,
-        field: "images",
-        hozAlign: "center",
-        vertAlign: "middle",
-        print: false,
-        download: false,
-        formatter: function formatter(cell, formatterParams) {
-          return "<div>\n                        <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>");
-        }
-      }, {
-        title: "GENDER",
-        minWidth: 200,
-        field: "remaining_stock",
-        hozAlign: "center",
+        title: "Email",
+        minWidth: 150,
+        responsive: 0,
+        field: "email",
+        headerHozAlign: "left",
+        hozAlign: "left",
         vertAlign: "middle",
         print: false,
         download: false
       }, {
-        title: "STATUS",
-        minWidth: 200,
+        title: "Status",
+        minWidth: 100,
+        responsive: 0,
         field: "status",
+        headerHozAlign: "center",
         hozAlign: "center",
         vertAlign: "middle",
         print: false,
-        download: false,
+        download: true,
         formatter: function formatter(cell, formatterParams) {
-          return "<div class=\"flex items-center lg:justify-center ".concat(cell.getData().status ? "text-success" : "text-danger", "\">\n                            <i data-lucide=\"check-square\" class=\"w-4 h-4 mr-2\"></i> ").concat(cell.getData().status ? "Active" : "Inactive", "\n                        </div>");
+          return "<div>\n                            <div class=\"font-medium\n                                ".concat(cell.getData().color, "\n                                whitespace-nowrap\">").concat(cell.getData().active, "</div>\n                        </div>");
         }
       }, {
         title: "ACTIONS",
@@ -42161,58 +42157,34 @@ __webpack_require__.r(__webpack_exports__);
       },
       // For print format
       {
-        title: "PRODUCT NAME",
+        title: "No",
+        width: 75,
+        responsive: 0,
+        vertAlign: "middle",
+        visible: false,
+        print: true,
+        download: true,
+        formatter: "rownum"
+      }, {
+        title: "Nama User",
         field: "name",
         visible: false,
         print: true,
         download: true
       }, {
-        title: "CATEGORY",
-        field: "category",
+        title: "Email",
+        field: "email",
         visible: false,
         print: true,
         download: true
       }, {
-        title: "REMAINING STOCK",
+        title: "Status",
         field: "remaining_stock",
         visible: false,
         print: true,
-        download: true
-      }, {
-        title: "STATUS",
-        field: "status",
-        visible: false,
-        print: true,
         download: true,
-        formatterPrint: function formatterPrint(cell) {
-          return cell.getValue() ? "Active" : "Inactive";
-        }
-      }, {
-        title: "IMAGE 1",
-        field: "images",
-        visible: false,
-        print: true,
-        download: true,
-        formatterPrint: function formatterPrint(cell) {
-          return cell.getValue()[0];
-        }
-      }, {
-        title: "IMAGE 2",
-        field: "images",
-        visible: false,
-        print: true,
-        download: true,
-        formatterPrint: function formatterPrint(cell) {
-          return cell.getValue()[1];
-        }
-      }, {
-        title: "IMAGE 3",
-        field: "images",
-        visible: false,
-        print: true,
-        download: true,
-        formatterPrint: function formatterPrint(cell) {
-          return cell.getValue()[2];
+        formatter: function formatter(cell, formatterParams) {
+          return "<div>\n                            <div class=\"font-medium\n                                ".concat(cell.getData().color, "\n                                whitespace-nowrap\">").concat(cell.getData().active, "</div>\n                        </div>");
         }
       }],
       renderComplete: function renderComplete() {
@@ -42278,7 +42250,9 @@ __webpack_require__.r(__webpack_exports__);
       table.print();
     });
   }
-})();
+}
+;
+window.TabulatorUser = TabulatorUser;
 })();
 
 /******/ })()

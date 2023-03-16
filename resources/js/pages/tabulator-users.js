@@ -1,14 +1,13 @@
 import { createIcons, icons } from "lucide";
-import Tabulator from "tabulator-tables";
+import TabulatorFull from "tabulator-tables";
 
-(function () {
-    "use strict";
+function TabulatorUser(url) {
 
     // Tabulator
     if ($("#tabulator-users").length) {
         // Setup Tabulator
-        let table = new Tabulator("#tabulator-users", {
-            ajaxURL: "https://dummy-data.left4code.com",
+        let table = new TabulatorFull("#tabulator-users", {
+            ajaxURL: url,
             ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,
@@ -31,65 +30,53 @@ import Tabulator from "tabulator-tables";
 
                 // For HTML table
                 {
-                    title: "NAME",
-                    minWidth: 200,
+                    title: "No",
+                    width: 75,
+                    responsive: 0,
+                    vertAlign: "middle",
+                    print: false,
+                    download: true,
+                    formatter:"rownum"
+                },
+                {
+                    title: "Nama User",
+                    minWidth: 150,
                     responsive: 0,
                     field: "name",
                     vertAlign: "middle",
                     print: false,
                     download: false,
-                    formatter(cell, formatterParams) {
-                        return `<div>
-                            <div class="font-medium whitespace-nowrap">${
-                                cell.getData().name
-                            }</div>
-                            <div class="text-slate-500 text-xs whitespace-nowrap">${
-                                cell.getData().category
-                            }</div>
-                        </div>`;
-                    },
                 },
                 {
-                    title: "EMAIL",
-                    minWidth: 200,
-                    field: "images",
-                    hozAlign: "center",
+                    title: "Email",
+                    minWidth: 150,
+                    responsive: 0,
+                    field: "email",
+                    headerHozAlign : "left",
+                    hozAlign: "left",
                     vertAlign: "middle",
                     print: false,
                     download: false,
-                    formatter(cell, formatterParams) {
-                        return `<div>
-                        <div class="font-medium whitespace-nowrap">${
-                            cell.getData().name
-                        }</div>`;
-                    },
+
                 },
                 {
-                    title: "GENDER",
-                    minWidth: 200,
-                    field: "remaining_stock",
-                    hozAlign: "center",
-                    vertAlign: "middle",
-                    print: false,
-                    download: false,
-                },
-                {
-                    title: "STATUS",
-                    minWidth: 200,
+                    title: "Status",
+                    minWidth: 100,
+                    responsive: 0,
                     field: "status",
+                    headerHozAlign: "center",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
-                    download: false,
+                    download: true,
                     formatter(cell, formatterParams) {
-                        return `<div class="flex items-center lg:justify-center ${
-                            cell.getData().status
-                                ? "text-success"
-                                : "text-danger"
-                        }">
-                            <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
-                                cell.getData().status ? "Active" : "Inactive"
-                            }
+                        return `<div>
+                            <div class="font-medium
+                                ${
+                                    cell.getData().color }
+                                whitespace-nowrap">${
+                                cell.getData().active
+                            }</div>
                         </div>`;
                     },
                 },
@@ -130,64 +117,44 @@ import Tabulator from "tabulator-tables";
 
                 // For print format
                 {
-                    title: "PRODUCT NAME",
+                    title: "No",
+                    width: 75,
+                    responsive: 0,
+                    vertAlign: "middle",
+                    visible: false,
+                    print: true,
+                    download: true,
+                    formatter:"rownum"
+                },
+                {
+                    title: "Nama User",
                     field: "name",
                     visible: false,
                     print: true,
                     download: true,
                 },
                 {
-                    title: "CATEGORY",
-                    field: "category",
+                    title: "Email",
+                    field: "email",
                     visible: false,
                     print: true,
                     download: true,
                 },
                 {
-                    title: "REMAINING STOCK",
+                    title: "Status",
                     field: "remaining_stock",
                     visible: false,
                     print: true,
                     download: true,
-                },
-                {
-                    title: "STATUS",
-                    field: "status",
-                    visible: false,
-                    print: true,
-                    download: true,
-                    formatterPrint(cell) {
-                        return cell.getValue() ? "Active" : "Inactive";
-                    },
-                },
-                {
-                    title: "IMAGE 1",
-                    field: "images",
-                    visible: false,
-                    print: true,
-                    download: true,
-                    formatterPrint(cell) {
-                        return cell.getValue()[0];
-                    },
-                },
-                {
-                    title: "IMAGE 2",
-                    field: "images",
-                    visible: false,
-                    print: true,
-                    download: true,
-                    formatterPrint(cell) {
-                        return cell.getValue()[1];
-                    },
-                },
-                {
-                    title: "IMAGE 3",
-                    field: "images",
-                    visible: false,
-                    print: true,
-                    download: true,
-                    formatterPrint(cell) {
-                        return cell.getValue()[2];
+                    formatter(cell, formatterParams) {
+                        return `<div>
+                            <div class="font-medium
+                                ${
+                                    cell.getData().color }
+                                whitespace-nowrap">${
+                                cell.getData().active
+                            }</div>
+                        </div>`;
                     },
                 },
             ],
@@ -270,4 +237,6 @@ import Tabulator from "tabulator-tables";
             table.print();
         });
     }
-})();
+};
+
+window.TabulatorUser = TabulatorUser;

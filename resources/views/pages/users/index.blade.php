@@ -8,7 +8,9 @@
     <div class="flex flex-col items-center mt-8 intro-y sm:flex-row">
         <h2 class="mr-auto text-lg font-medium">List User</h2>
         <div class="flex w-full mt-4 sm:w-auto sm:mt-0">
-            <button class="mr-2 shadow-md btn btn-primary">Add New User</button>
+            <div class="flex w-full mt-4 sm:w-auto sm:mt-0">
+                <button data-tw-toggle="modal" data-tw-target="#superlarge-modal-add-user" class="mr-2 shadow-md btn btn-primary"> <i data-lucide="user-plus" class="w-4 h-4 mr-1"></i>Tambah User</button>
+            </div>
         </div>
     </div>
     <!-- BEGIN: HTML Table Data -->
@@ -34,8 +36,12 @@
         </div>
     </div>
     <!-- END: HTML Table Data -->
+    @include('pages.users.modal._add')
 @endsection
 
 @section('script')
     <script src="{{ mix('dist/js/tabulator-users.js') }}"></script>
+    <script type="module">
+        TabulatorUser("{{ route('users.tabulator') }}")
+    </script>
 @endsection

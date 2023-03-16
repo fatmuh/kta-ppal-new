@@ -36,7 +36,9 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function () {
+        Route::get('/tabulator', 'tabulator')->name('tabulator');
         Route::get('/', 'index')->name('index');
+        Route::post('/add-user', 'store')->name('store');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

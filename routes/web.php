@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/tabulator', 'tabulator')->name('tabulator');
         Route::get('/', 'index')->name('index');
         Route::post('/add-user', 'store')->name('store');
-        Route::get('/{id}/delete', 'delete')->name('delete');
+        Route::delete('/{id}/delete', 'delete')->name('delete');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

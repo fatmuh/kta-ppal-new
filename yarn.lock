@@ -6149,6 +6149,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+sweetalert2@^11.4.8:
+  version "11.4.8"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.4.8.tgz"
+  integrity sha512-BDS/+E8RwaekGSxCPUbPnsRAyQ439gtXkTF/s98vY2l9DaVEOMjGj1FaQSorfGREKsbbxGSP7UXboibL5vgTMA==
+
 symbol-observable@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.0.1.tgz"

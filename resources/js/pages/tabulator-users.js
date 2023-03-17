@@ -1,11 +1,13 @@
 import { createIcons, icons } from "lucide";
 import TabulatorFull from "tabulator-tables";
+import Swal from 'sweetalert2';
 
 function TabulatorUser(url) {
 
     // Tabulator
     if ($("#tabulator-users").length) {
         // Setup Tabulator
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         let table = new TabulatorFull("#tabulator-users", {
             ajaxURL: url,
             ajaxFiltering: true,
@@ -91,13 +93,19 @@ function TabulatorUser(url) {
                     download: false,
                     formatter(cell, formatterParams) {
                         return `<div class="flex lg:justify-center items-center">
-                            <a class="edit flex items-center mr-3" href="javascript:;">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                            </a>
-                            <a class="delete flex items-center text-danger" href="${cell.getData().delete_url}">
-                                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                            </a>
-                        </div>`;
+                                    <a class="edit flex items-center mr-3" href="javascript:;">
+                                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                                    </a>
+                                    <a href="javascript: void(0);" class="flex items-center text-danger" onclick="deleteConfirm('delete-user-form-${cell.getData().id}')">
+
+                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete</a>
+
+                                    <form id="delete-user-form-${cell.getData().id}" action="${cell.getData().delete_url}" method="POST">
+                                    <input type="hidden" name="_token" value="${CSRF_TOKEN}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    </form>
+
+                                </div>`;
                     },
                 },
 
@@ -195,6 +203,24 @@ function TabulatorUser(url) {
             $("#tabulator-html-filter-value").val("");
             filterHTMLForm();
         });
+
+        window.deleteConfirm = function(formId)
+            {
+                Swal.fire({
+                    title: 'Apakah Anda Ykin?',
+                    text: "Apakah anda ingin melanjutkan proses ini?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3F72EA',
+                    confirmButtonText: 'Ya, lanjutkan!',
+                    cancelButtonColor: '#EC981A',
+                    cancelButtonText: "Tidak!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(formId).submit();
+                    }
+                });
+            }
 
         // Export
         $("#tabulator-export-csv").on("click", function (event) {

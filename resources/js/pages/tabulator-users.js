@@ -207,7 +207,7 @@ function TabulatorUser(url) {
         window.deleteConfirm = function(formId)
             {
                 Swal.fire({
-                    title: 'Apakah Anda Ykin?',
+                    title: 'Apakah Anda Yakin?',
                     text: "Apakah anda ingin melanjutkan proses ini?",
                     icon: 'warning',
                     showCancelButton: true,

@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/', 'index')->name('index');
         Route::post('/add-kta', 'store')->name('store');
         Route::delete('/{id}/delete', 'delete')->name('delete');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+        Route::post('/{id}/update', 'update')->name('update');
     });
 
     Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function () {

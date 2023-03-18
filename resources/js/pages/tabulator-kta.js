@@ -87,14 +87,15 @@ function TabulatorKta(url) {
                     download: false,
                     formatter(cell, formatterParams) {
                         return `<div class="flex lg:justify-center items-center">
-                                    <a class="edit flex items-center mr-3" href="javascript:;">
+
+                                    <a href="${cell.getData().detail_url}" class="detail-sisuka flex items-center text-amber-600 mr-3" >
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    <a href="javascript: void(0);" class="flex items-center text-danger" onclick="deleteConfirm('delete-user-form-${cell.getData().id}')">
+                                    <a href="javascript: void(0);" class="flex items-center text-danger" onclick="deleteConfirm('delete-kta-form-${cell.getData().id}')">
 
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete</a>
 
-                                    <form id="delete-user-form-${cell.getData().id}" action="${cell.getData().delete_url}" method="POST">
+                                    <form id="delete-kta-form-${cell.getData().id}" action="${cell.getData().delete_url}" method="POST">
                                     <input type="hidden" name="_token" value="${CSRF_TOKEN}">
                                     <input type="hidden" name="_method" value="delete">
                                     </form>

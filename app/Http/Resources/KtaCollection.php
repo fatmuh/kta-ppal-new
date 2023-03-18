@@ -33,6 +33,7 @@ class KtaCollection extends JsonResource
             'alamat1' => $this->alamat1,
             'alamat2' => $this->alamat2,
             'wil_rayon' => $this->wil_rayon,
+            'detail_url'    => route('kta.detail', $this->id),
             'delete_url' => route('kta.delete', $this->id),
         ];
     }

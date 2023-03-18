@@ -24,6 +24,14 @@ class KtaController extends Controller
         return view('pages.kta.index');
     }
 
+    public function detail($id)
+    {
+        list($code, $data) = $this->repository->getDetail($id);
+        return view('pages.kta.detail', [
+            'data' => $data
+        ]);
+    }
+
     public function store(KtaRequest $request)
     {
         list($code, $reponse) = $this->repository->saveKta($request);
@@ -31,6 +39,15 @@ class KtaController extends Controller
             return redirect()->back()->with('success-message', 'Berhasil menambahkan KTA');
         }
         return redirect()->back()->with('error-message', 'Gagal menambahkan KTA');
+    }
+
+    public function update(KtaRequest $request, $id)
+    {
+        list($code, $response) = $this->repository->getUpdate($request, $id);
+        if ($code === 200) {
+            return redirect()->back()->with('success-message', $response['message']);
+        }
+        return redirect()->back()->with('error-message',  $response['message']);
     }
 
     public function delete($id)

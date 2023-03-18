@@ -6,6 +6,7 @@
     "/dist/js/ckeditor-balloon-block.js": "/dist/js/ckeditor-balloon-block.js",
     "/dist/js/ckeditor-document.js": "/dist/js/ckeditor-document.js",
     "/dist/js/tabulator-users.js": "/dist/js/tabulator-users.js",
+    "/dist/js/tabulator-kta.js": "/dist/js/tabulator-kta.js",
     "/dist/js/additional.js": "/dist/js/additional.js",
     "/dist/css/app.css": "/dist/css/app.css",
     "/dist/json/location.json": "/dist/json/location.json",

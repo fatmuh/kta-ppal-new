@@ -21,6 +21,14 @@ class SideMenu
                 ],
                 'title' => 'Dashboard'
             ],
+            'kta' => [
+                'icon' => 'table',
+                'route_name' => 'kta.index',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'KTA'
+            ],
             'user' => [
                 'icon' => 'users',
                 'route_name' => 'users.index',

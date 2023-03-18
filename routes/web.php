@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KtaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UsersController;
@@ -33,6 +34,13 @@ Route::middleware('auth')->group(function() {
 
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/', 'dashboard')->name('dashboard');
+    });
+
+    Route::controller(KtaController::class)->prefix('kta')->name('kta.')->group(function () {
+        Route::get('/tabulator', 'tabulator')->name('tabulator');
+        Route::get('/', 'index')->name('index');
+        Route::post('/add-kta', 'store')->name('store');
+        Route::delete('/{id}/delete', 'delete')->name('delete');
     });
 
     Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function () {

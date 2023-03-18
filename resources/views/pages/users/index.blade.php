@@ -37,11 +37,9 @@
     </div>
     <!-- END: HTML Table Data -->
     @include('pages.users.modal._add')
-    @include('layout.components.toast')
 @endsection
 
 @section('script')
-<script src="{{ mix('dist/js/additional.js') }}"></script>
     <script src="{{ mix('dist/js/tabulator-users.js') }}"></script>
     <script type="module">
         TabulatorUser("{{ route('users.tabulator') }}")

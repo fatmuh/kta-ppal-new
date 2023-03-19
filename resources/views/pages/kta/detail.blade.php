@@ -187,14 +187,26 @@
                                     <div class="col-span-6">
                                         <label for="" class="form-label">Foto 2x3</label> <code class="text-danger">*</code>
                                         <div class="">
-                                            <input id="foto" type="text" name="foto" class="form-control" placeholder="Masukan Foto" value="{{ $data->foto }}">
+                                            <input type="hidden" name="oldFoto" value="{{ $data->foto }}">
+                                            @if ($data->foto)
+                                            <img class="w-20 foto-preview" src="{{ asset('storage/foto/'. $data->foto) }}">
+                                        @else
+                                            <img src="https://i.pinimg.com/originals/fd/14/a4/fd14a484f8e558209f0c2a94bc36b855.png" width="129px" height="176px">
+                                        @endif
+                                            <input id="foto" type="file" name="foto" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Masukan Foto" onchange="previewImage()">
                                         </div>
                                     </div>
 
                                     <div class="col-span-6">
                                         <label for="" class="form-label">Tanda Tangan</label> <code class="text-danger">*</code>
                                         <div class="">
-                                            <input id="ttd" type="text" name="ttd" class="form-control" placeholder="John Doe" value="{{ $data->ttd }}">
+                                            <input type="hidden" name="oldTtd" value="{{ $data->ttd }}">
+                                            @if ($data->ttd)
+                                            <img class="w-20 ttd-preview" src="{{ asset('storage/ttd/'. $data->ttd) }}">
+                                        @else
+                                            <img src="https://i.pinimg.com/originals/fd/14/a4/fd14a484f8e558209f0c2a94bc36b855.png" width="129px" height="176px">
+                                        @endif
+                                            <input id="ttd" type="file" name="ttd" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Masukan TTD" onchange="previewTtd()">
                                         </div>
                                     </div>
                                 </div>

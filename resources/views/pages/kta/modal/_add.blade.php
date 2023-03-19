@@ -110,14 +110,16 @@
                                 <div class="col-span-6">
                                     <label for="" class="form-label">Foto 2x3</label> <code class="text-danger">*</code>
                                     <div class="">
-                                        <input id="foto" type="text" name="foto" class="form-control" placeholder="Masukan Foto" value="{{ old('foto') }}">
+                                        <img class="w-20 foto-preview">
+                                        <input name="foto" id="foto" type="file" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onchange="previewImage()">
                                     </div>
                                 </div>
 
                                 <div class="col-span-6">
                                     <label for="" class="form-label">Tanda Tangan</label> <code class="text-danger">*</code>
                                     <div class="">
-                                        <input id="ttd" type="text" name="ttd" class="form-control" placeholder="John Doe" value="{{ old('ttd') }}">
+                                        <img class="w-20 ttd-preview">
+                                        <input name="ttd" id="ttd" type="file" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onchange="previewTtd()">
                                     </div>
                                 </div>
                             </div>

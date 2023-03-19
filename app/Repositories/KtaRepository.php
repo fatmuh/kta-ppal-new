@@ -9,6 +9,7 @@ use App\Http\Requests\KtaRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\KtaCollection;
+use Illuminate\Support\Facades\Storage;
 
 class KtaRepository
 {
@@ -43,6 +44,25 @@ class KtaRepository
 
         DB::beginTransaction();
         try {
+
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $fileName = uniqid(). '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/foto/', $fileName);
+                $foto = $fileName;
+            } else {
+                $foto = "-";
+            }
+
+            if ($request->hasFile('ttd')) {
+                $file = $request->file('ttd');
+                $fileName = uniqid(). '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/ttd/', $fileName);
+                $ttd = $fileName;
+            } else {
+                $ttd = "-";
+            }
+
             Kta::create([
                 'no_kta'     => $request->no_kta,
                 'full_name'     => $request->full_name,
@@ -53,8 +73,8 @@ class KtaRepository
                 'nik'     => $request->nik,
                 'tanda_jasa_tertinggi'     => $request->tanda_jasa_tertinggi,
                 'tanggal_cetak'     => $request->tanggal_cetak,
-                'foto'     => $request->foto,
-                'ttd'     => $request->ttd,
+                'foto'     => $foto,
+                'ttd'     => $ttd,
                 'istri_suami'     => $request->istri_suami,
                 'nama_istri_suami'     => $request->nama_istri_suami,
                 'nik_istri_suami'     => $request->nik_istri_suami,
@@ -91,6 +111,30 @@ class KtaRepository
         DB::beginTransaction();
         try {
 
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $fileName = uniqid(). '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/foto/', $fileName);
+
+                Storage::delete('public/foto/'. $request->oldFoto);
+
+                $foto = $fileName;
+            } else {
+                $foto = $request->oldFoto;
+            }
+
+            if ($request->hasFile('ttd')) {
+                $file = $request->file('ttd');
+                $fileName = uniqid(). '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/ttd/', $fileName);
+
+                Storage::delete('public/ttd/'. $request->oldTtd);
+
+                $ttd = $fileName;
+            } else {
+                $ttd = $request->oldTtd;
+            }
+
             $data->update([
                 'no_kta'     => $request->no_kta,
                 'full_name'     => $request->full_name,
@@ -101,8 +145,8 @@ class KtaRepository
                 'nik'     => $request->nik,
                 'tanda_jasa_tertinggi'     => $request->tanda_jasa_tertinggi,
                 'tanggal_cetak'     => $request->tanggal_cetak,
-                'foto'     => $request->foto,
-                'ttd'     => $request->ttd,
+                'foto'     => $foto,
+                'ttd'     => $ttd,
                 'istri_suami'     => $request->istri_suami,
                 'nama_istri_suami'     => $request->nama_istri_suami,
                 'nik_istri_suami'     => $request->nik_istri_suami,
@@ -129,6 +173,8 @@ class KtaRepository
 
         DB::beginTransaction();
         try {
+            Storage::delete('public/ttd/'. $data->ttd);
+            Storage::delete('public/foto/'. $data->foto);
             $data->delete();
 
         } catch (\Throwable $e) {

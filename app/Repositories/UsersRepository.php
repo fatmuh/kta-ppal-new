@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserCollection;
+use App\Http\Requests\UsersUpdateRequest;
 
 class UsersRepository
 {
@@ -19,7 +20,7 @@ class UsersRepository
         if ($request->has('filter')) {
             $reqFilter = $request->get('filter');
             foreach ($reqFilter as $filter) {
-                if($filter['field'] == 'name' && $filter['value']) {
+                if($filter['field'] == 'email' && $filter['value']) {
                     $query = $query->where(function ($qq) use ($filter) {
                         $qq->where('email', 'like', '%' . $filter['value'] . '%');
                     });
@@ -57,6 +58,40 @@ class UsersRepository
         DB::commit();
 
         return [200, ['message' => 'Terima kasih telah mambahkan User']];
+    }
+
+    public function getDetail($id)
+    {
+        $data = User::where('id', $id)->first();
+
+        if (!$data) {
+            throw new ModelException('Data tidak ditemukan!', 404);
+        }
+        return [200, new UserCollection($data)];
+    }
+
+    public function getUpdate(UsersUpdateRequest $request, $id)
+    {
+        $data = User::where('id', $id)->first();
+        if (!$data) {
+            throw new ModelException('Data tidak ditemukan!', 404);
+        }
+
+        DB::beginTransaction();
+        try {
+
+            $data->update([
+                'name'     => $request->edit_users_name,
+                'email'     => $request->edit_users_email,
+                'active'     => $request->edit_users_status
+            ]);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw new ModelException($e->getMessage(), $e->getCode());
+        }
+        DB::commit();
+        return [200, ['message' => 'Data berhasil diupdate!']];
     }
 
     public function getDelete($id)

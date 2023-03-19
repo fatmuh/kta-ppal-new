@@ -1,6 +1,7 @@
 import { createIcons, icons } from "lucide";
-import TabulatorFull from "tabulator-tables";
+import Tabulator from "tabulator-tables";
 import Swal from 'sweetalert2';
+import * as xlsx from 'xlsx';
 
 function TabulatorUser(url) {
 
@@ -8,15 +9,16 @@ function TabulatorUser(url) {
     if ($("#tabulator-users").length) {
         // Setup Tabulator
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        let table = new TabulatorFull("#tabulator-users", {
+        let table = new Tabulator("#tabulator-users", {
             ajaxURL: url,
-            ajaxFiltering: true,
+            // ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,
             printStyled: true,
             pagination: "remote",
             paginationSize: 10,
             paginationSizeSelector: [10, 20, 30, 40],
+            filterMode:"remote",
             layout: "fitColumns",
             responsiveLayout: "collapse",
             placeholder: "No matching records found",
@@ -83,7 +85,7 @@ function TabulatorUser(url) {
                     },
                 },
                 {
-                    title: "ACTIONS",
+                    title: "Action",
                     minWidth: 200,
                     field: "actions",
                     responsive: 1,
@@ -93,9 +95,10 @@ function TabulatorUser(url) {
                     download: false,
                     formatter(cell, formatterParams) {
                         return `<div class="flex lg:justify-center items-center">
-                                    <a class="edit flex items-center mr-3" href="javascript:;">
+                                    <a class="edit flex items-center mr-3" onclick="detailUser('${cell.getData().detail_url}')">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
+
                                     <a href="javascript: void(0);" class="flex items-center text-danger" onclick="deleteConfirm('delete-user-form-${cell.getData().id}')">
 
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete</a>
@@ -173,11 +176,12 @@ function TabulatorUser(url) {
 
         // Filter function
         function filterHTMLForm() {
-            let field = $("#tabulator-html-filter-field").val();
-            let type = $("#tabulator-html-filter-type").val();
             let value = $("#tabulator-html-filter-value").val();
-            table.setFilter(field, type, value);
-        }
+            table.setFilter([
+              { field: 'email', type: 'like', value: value }
+            ]);
+          }
+
 
         // On submit filter form
         $("#tabulator-html-filter-form")[0].addEventListener(
@@ -198,8 +202,6 @@ function TabulatorUser(url) {
 
         // On reset filter form
         $("#tabulator-html-filter-reset").on("click", function (event) {
-            $("#tabulator-html-filter-field").val("name");
-            $("#tabulator-html-filter-type").val("like");
             $("#tabulator-html-filter-value").val("");
             filterHTMLForm();
         });
@@ -219,6 +221,30 @@ function TabulatorUser(url) {
                     if (result.isConfirmed) {
                         document.getElementById(formId).submit();
                     }
+                });
+            }
+
+            window.detailUser = function(url){
+                console.log(url);
+                const el = document.querySelector("#superlarge-modal-edit-user");
+                const modal = tailwind.Modal.getOrCreateInstance(el);
+                $('#edit-user-header-title').text('Detail User');
+
+                $.ajax({
+                    url,
+                    type: 'GET',
+                    datatype: 'html',
+                })
+                .done(function (data) {
+                    $("#superlarge-modal-edit-user .modal-body").empty().html(data)
+                    // LucideGlobal();
+                    // DateGlobal();
+                    // $('#edit_berjangka_minimum_fund').maskMoney(
+                    //     {thousands:'', decimal:'.', allowZero:true}
+                    // );
+                    modal.toggle();
+                }).fail(function (jqXHR, textStatus, thrownError) {
+                    alert('Request failed: ' + textStatus)
                 });
             }
 

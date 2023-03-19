@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/tabulator', 'tabulator')->name('tabulator');
         Route::get('/', 'index')->name('index');
         Route::post('/add-user', 'store')->name('store');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+        Route::post('/{id}/update', 'update')->name('update');
         Route::delete('/{id}/delete', 'delete')->name('delete');
     });
 

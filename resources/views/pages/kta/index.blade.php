@@ -30,6 +30,35 @@
                     <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
                 </button>
             </div>
+            <div class="w-1/2 dropdown sm:w-auto">
+                <button class="w-full dropdown-toggle btn btn-outline-secondary sm:w-auto" aria-expanded="false" data-tw-toggle="dropdown">
+                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export <i data-lucide="chevron-down" class="w-4 h-4 ml-auto sm:ml-2"></i>
+                </button>
+                <div class="w-40 dropdown-menu">
+                    <ul class="dropdown-content">
+                        <li>
+                            <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export CSV
+                            </a>
+                        </li>
+                        <li>
+                            <a id="tabulator-export-json" href="javascript:;" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export JSON
+                            </a>
+                        </li>
+                        <li>
+                            <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export XLSX
+                            </a>
+                        </li>
+                        <li>
+                            <a id="tabulator-export-html" href="javascript:;" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export HTML
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="overflow-x-auto scrollbar-hidden">
             <div id="tabulator-kta" class="mt-5 table-report table-report--tabulator"></div>

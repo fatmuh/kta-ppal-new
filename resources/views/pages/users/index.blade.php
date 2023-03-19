@@ -37,6 +37,7 @@
     </div>
     <!-- END: HTML Table Data -->
     @include('pages.users.modal._add')
+    @include('pages.users.modal._edit')
 @endsection
 
 @section('script')

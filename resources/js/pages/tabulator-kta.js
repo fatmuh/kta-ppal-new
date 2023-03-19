@@ -1,6 +1,7 @@
 import { createIcons, icons } from "lucide";
-import TabulatorFull from "tabulator-tables";
+import Tabulator from "tabulator-tables";
 import Swal from 'sweetalert2';
+import * as xlsx from 'xlsx';
 
 function TabulatorKta(url) {
 
@@ -8,15 +9,16 @@ function TabulatorKta(url) {
     if ($("#tabulator-kta").length) {
         // Setup Tabulator
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        let table = new TabulatorFull("#tabulator-kta", {
+        let table = new Tabulator("#tabulator-kta", {
             ajaxURL: url,
-            ajaxFiltering: true,
+            // ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,
             printStyled: true,
             pagination: "remote",
             paginationSize: 10,
             paginationSizeSelector: [10, 20, 30, 40],
+            filterMode:"remote",
             layout: "fitColumns",
             responsiveLayout: "collapse",
             placeholder: "No matching records found",
@@ -37,7 +39,7 @@ function TabulatorKta(url) {
                     responsive: 0,
                     vertAlign: "middle",
                     print: false,
-                    download: true,
+                    download: false,
                     formatter:"rownum"
                 },
                 {
@@ -77,7 +79,7 @@ function TabulatorKta(url) {
                     download: false,
                 },
                 {
-                    title: "ACTIONS",
+                    title: "Action",
                     minWidth: 200,
                     field: "actions",
                     responsive: 1,
@@ -105,16 +107,6 @@ function TabulatorKta(url) {
                 },
 
                 // For print format
-                {
-                    title: "No",
-                    width: 75,
-                    responsive: 0,
-                    vertAlign: "middle",
-                    visible: false,
-                    print: true,
-                    download: true,
-                    formatter:"rownum"
-                },
                 {
                     title: "Nama Lengkap",
                     field: "full_name",
@@ -165,11 +157,12 @@ function TabulatorKta(url) {
 
         // Filter function
         function filterHTMLForm() {
-            let field = $("#tabulator-html-filter-field").val();
-            let type = $("#tabulator-html-filter-type").val();
             let value = $("#tabulator-html-filter-value").val();
-            table.setFilter(field, type, value);
-        }
+            table.setFilter([
+              { field: 'full_name', type: 'like', value: value }
+            ]);
+          }
+
 
         // On submit filter form
         $("#tabulator-html-filter-form")[0].addEventListener(
@@ -190,8 +183,6 @@ function TabulatorKta(url) {
 
         // On reset filter form
         $("#tabulator-html-filter-reset").on("click", function (event) {
-            $("#tabulator-html-filter-field").val("name");
-            $("#tabulator-html-filter-type").val("like");
             $("#tabulator-html-filter-value").val("");
             filterHTMLForm();
         });

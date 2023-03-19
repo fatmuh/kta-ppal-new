@@ -229,6 +229,7 @@ import Tabulator from "tabulator-tables";
             let type = $("#tabulator-html-filter-type").val();
             let value = $("#tabulator-html-filter-value").val();
             table.setFilter(field, type, value);
+            console.log(value);
         }
 
         // On submit filter form

@@ -11,6 +11,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
         <script src="{{ mix('dist/js/app.js') }}"></script>
         <script src="{{ mix('dist/js/additional.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- END: JS Assets-->
 
         @yield('script')

@@ -66,6 +66,7 @@
     </div>
     <!-- END: HTML Table Data -->
     @include('pages.kta.modal._add')
+    @include('pages.kta.modal._depan')
 @endsection
 
 @section('script')

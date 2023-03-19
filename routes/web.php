@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function() {
         Route::delete('/{id}/delete', 'delete')->name('delete');
         Route::get('/{id}/detail', 'detail')->name('detail');
         Route::post('/{id}/update', 'update')->name('update');
+        Route::get('/{id}/front', 'front')->name('front');
     });
 
     Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function () {

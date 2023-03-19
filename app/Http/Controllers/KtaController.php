@@ -58,4 +58,12 @@ class KtaController extends Controller
         }
         return redirect()->back()->with('error-message',  $response['message']);
     }
+
+    public function front($id)
+    {
+        list($code, $data) = $this->repository->getDetail($id);
+        return view('pages.kta.modal._data', [
+            'data' => $data
+        ]);
+    }
 }

@@ -43,6 +43,15 @@ function TabulatorKta(url) {
                     formatter:"rownum"
                 },
                 {
+                    title: "No. KTA",
+                    minWidth: 150,
+                    responsive: 0,
+                    field: "no_kta",
+                    vertAlign: "middle",
+                    print: false,
+                    download: false,
+                },
+                {
                     title: "Nama Lengkap",
                     minWidth: 150,
                     responsive: 0,
@@ -52,7 +61,7 @@ function TabulatorKta(url) {
                     download: false,
                 },
                 {
-                    title: "Pangkat Teakhir",
+                    title: "Pangkat Terakhir",
                     minWidth: 150,
                     responsive: 0,
                     field: "pangkat_terakhir",
@@ -107,6 +116,13 @@ function TabulatorKta(url) {
                 },
 
                 // For print format
+                {
+                    title: "No. KTA",
+                    field: "no_kta",
+                    visible: false,
+                    print: true,
+                    download: true,
+                },
                 {
                     title: "Nama Lengkap",
                     field: "full_name",

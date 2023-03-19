@@ -13,6 +13,8 @@
         <script src="{{ mix('dist/js/additional.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script src="https://kta.ppal.or.id/js/bluebird.js"></script>
+        <script src="https://kta.ppal.or.id/js/html2canvas.min.js"></script>
         <!-- END: JS Assets-->
 
         @yield('script')

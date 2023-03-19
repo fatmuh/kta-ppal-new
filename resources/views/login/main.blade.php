@@ -27,7 +27,7 @@
             <div class="flex h-screen py-5 my-10 xl:h-auto xl:py-0 xl:my-0">
                 <div class="w-full px-5 py-8 mx-auto my-auto bg-white rounded-md shadow-md xl:ml-20 dark:bg-darkmode-600 xl:bg-transparent sm:px-8 xl:p-0 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
                     <h2 class="text-2xl font-bold text-center intro-x xl:text-3xl xl:text-left">Sign In</h2>
-                    <div class="mt-2 text-center intro-x text-slate-400 xl:hidden">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
+                    <div class="mt-2 text-center intro-x text-slate-400 xl:hidden">A few more clicks to sign in to your account. Manage all your card membership data in one place</div>
                     <div class="mt-8 intro-x">
                         <form id="login-form">
                             <input id="email" type="text" class="block px-4 py-3 intro-x login__input form-control" placeholder="Email" value="admin@gmail.com">

@@ -24,12 +24,20 @@
                 <label for="" class="form-label">Status</label> <code class="text-danger">*</code>
                 <div class="">
                     <select id="edit_users_status" name="edit_users_status" data-placeholder="Select your favorite actors" class="form-control">
+                        @if ($data->active == 0)
+                        <option value="{{ $data->active }}">{{
+                            ($data->active == 0) ? 'Not Active' :
+                            (($data->active == 1) ? 'Active' : '')
+                        }} (Current)</option>
+                        <option value="1">Active</option>
+
+                        @else
                         <option value="{{ $data->active }}">{{
                             ($data->active == 0) ? 'Not Active' :
                             (($data->active == 1) ? 'Active' : '')
                         }} (Current)</option>
                         <option value="0">Not Active</option>
-                        <option value="1">Active</option>
+                        @endif
                     </select>
                     {{-- <input id="edit_users_email" type="email" name="edit_users_email" class="form-control" value="
                     {{

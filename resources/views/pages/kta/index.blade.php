@@ -18,7 +18,7 @@
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
             <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" >
                 <div class="items-center mt-2 sm:flex sm:mr-4 xl:mt-0">
-                    <input id="tabulator-html-filter-value" type="text" class="mt-2 form-control sm:w-40 2xl:w-full sm:mt-0"  placeholder="Search...">
+                    <input id="tabulator-html-filter-value" type="text" class="mt-2 form-control sm:w-40 2xl:w-full sm:mt-0"  placeholder="Cari Berdasarkan Nama">
                 </div>
                 <div class="mt-2 xl:mt-0">
                     <button id="tabulator-html-filter-go" type="button" class="w-full btn btn-primary sm:w-16" >Go</button>

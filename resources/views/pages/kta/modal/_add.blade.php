@@ -99,7 +99,7 @@
                                 <div class="col-span-12">
                                     <label for="" class="form-label">Tanggal Cetak</label> <code class="text-danger">*</code>
                                     <div class="">
-                                        <input id="tanggal_cetak" type="text" name="tanggal_cetak" class="form-control" placeholder="Masukkan Tanggal Cetak" value="{{ old('tanggal_cetak') }}">
+                                        <input id="tanggal_cetak" type="text" name="tanggal_cetak" class="form-control" placeholder="Masukkan Tanggal Cetak" value="{{ date('d M Y'); }}">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         <div class="col-span-12 mt-3">
                             <div class="grid grid-cols-12 gap-2">
                                 <div class="col-span-6">
-                                    <label for="" class="form-label">Foto 2x3</label> <code class="text-danger">*</code>
+                                    <label for="" class="form-label">Foto 2x3</label>
                                     <div class="">
                                         <img class="w-20 foto-preview">
                                         <input name="foto" id="foto" type="file" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onchange="previewImage()">
@@ -116,7 +116,7 @@
                                 </div>
 
                                 <div class="col-span-6">
-                                    <label for="" class="form-label">Tanda Tangan</label> <code class="text-danger">*</code>
+                                    <label for="" class="form-label">Tanda Tangan</label>
                                     <div class="">
                                         <img class="w-20 ttd-preview">
                                         <input name="ttd" id="ttd" type="file" class="form-control   w-full px-3  py-1.5  text-base  font-normal text-gray-700 bg-white bg-clip-paddingborder border-solid border-gray-300  rounded  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onchange="previewTtd()">
@@ -139,7 +139,7 @@
                                 </div>
 
                                 <div class="col-span-6">
-                                    <label for="" class="form-label">Nama Istri / Suami</label> <code class="text-danger">*</code>
+                                    <label for="" class="form-label">Nama Istri / Suami</label>
                                     <div class="">
                                         <input id="nama_istri_suami" type="text" name="nama_istri_suami" class="form-control" placeholder="Masukan Nama Istri / Suami" value="{{ old('nama_istri_suami') }}">
                                     </div>
@@ -150,7 +150,7 @@
                         <div class="col-span-12 mt-3">
                             <div class="grid grid-cols-12 gap-2">
                                 <div class="col-span-6">
-                                    <label for="" class="form-label">NIK Istri / Suami</label> <code class="text-danger">*</code>
+                                    <label for="" class="form-label">NIK Istri / Suami</label>
                                     <div class="">
                                         <input id="nik_istri_suami" type="text" name="nik_istri_suami" class="form-control" placeholder="Masukkan Nomor Induk Kependudukan" value="{{ old('nik_istri_suami') }}">
                                     </div>
@@ -175,7 +175,7 @@
                                 </div>
 
                                 <div class="col-span-6">
-                                    <label for="" class="form-label">Alamat 2</label> <code class="text-danger">*</code>
+                                    <label for="" class="form-label">Alamat 2</label>
                                     <div class="">
                                         <input id="alamat2" type="text" name="alamat2" class="form-control" value="{{ old('alamat2') }}">
                                     </div>

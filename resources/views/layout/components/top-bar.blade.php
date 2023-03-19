@@ -3,8 +3,8 @@
     <div class="flex items-center h-full">
         <!-- BEGIN: Logo -->
         <a href="" class="hidden -intro-x md:flex">
-            <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.png') }}">
-            <span class="ml-3 text-lg text-white">
+            <img alt="Midone - HTML Admin Template" class="w-8" src="{{ asset('dist/images/logo.png') }}">
+            <span class="mt-1 ml-3 text-lg text-white">
                 PPAL
             </span>
         </a>

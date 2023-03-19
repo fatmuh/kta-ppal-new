@@ -37,10 +37,10 @@ class KtaRequest extends FormRequest
             'foto' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg', 'max:4096'],
             'ttd' => ['nullable'],
             'istri_suami' => ['required'],
-            'nama_istri_suami' => ['required'],
-            'nik_istri_suami' => ['required'],
+            'nama_istri_suami' => ['nullable'],
+            'nik_istri_suami' => ['nullable'],
             'alamat1' => ['required'],
-            'alamat2' => ['required'],
+            'alamat2' => ['nullable'],
             'wil_rayon' => ['required'],
         ];
     }
@@ -59,10 +59,7 @@ class KtaRequest extends FormRequest
             'tanda_jasa_tertinggi.required' => 'Tanda jasa tertinggi harap di isi',
             'tanggal_cetak.required' => 'Tanggal cetak harap di isi',
             'istri_suami.required' => 'Istri / suami harap di isi',
-            'nama_istri_suami.required' => 'Nama istri / suami harap di isi',
-            'nik_istri_suami.required' => 'NIK istri / suami harap di isi',
             'alamat1.required' => 'Alamat 1 harap di isi',
-            'alamat2.required' => 'Alamat 2 harap di isi',
             'wil_rayon.required' => 'Wilayah / rayon harap di isi',
         ];
     }

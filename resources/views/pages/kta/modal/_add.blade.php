@@ -54,7 +54,16 @@
                                 <div class="col-span-6">
                                     <label for="" class="form-label">Golongan Darah</label> <code class="text-danger">*</code>
                                     <div class="">
-                                        <input id="gol_darah" type="text" name="gol_darah" class="form-control" placeholder="Masukan Golongan Darah" value="{{ old('gol_darah') }}">
+                                        <select class="form-control" id="gol_darah" name="gol_darah" required="">
+                                            <option value="-">-</option>
+                                            <option value="A">A</option>
+                                            <option value="A+">A+</option>
+                                            <option value="B">B</option>
+                                            <option value="B+">B+</option>
+                                            <option value="AB">AB</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="O">O</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -119,7 +128,11 @@
                                 <div class="col-span-6">
                                     <label for="" class="form-label">Istri / Suami</label> <code class="text-danger">*</code>
                                     <div class="">
-                                        <input id="istri_suami" type="text" name="istri_suami" class="form-control" placeholder="Masukan Istri / Suami" value="{{ old('istri_suami') }}">
+                                        <select class="form-control" id="istri_suami" name="istri_suami" required="">
+                                            <option value="">Pilih Salah Satu</option>
+                                            <option value="Istri">Istri</option>
+                                            <option value="Suami">Suami</option>
+                                        </select>
                                     </div>
                                 </div>
 

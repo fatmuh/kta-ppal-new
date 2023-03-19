@@ -19,7 +19,7 @@
                 <div class="my-auto">
                     <img alt="Midone - HTML Admin Template" class="w-1/2 -mt-16 -intro-x" src="{{ asset('dist/images/illustration.svg') }}">
                     <div class="mt-10 text-4xl font-medium leading-tight text-white -intro-x">A few more clicks to <br> sign in to your account.</div>
-                    <div class="mt-5 text-lg text-white -intro-x text-opacity-70 dark:text-slate-400">Manage all your e-commerce accounts in one place</div>
+                    <div class="mt-5 text-lg text-white -intro-x text-opacity-70 dark:text-slate-400">Manage all your card membership data in one place</div>
                 </div>
             </div>
             <!-- END: Login Info -->

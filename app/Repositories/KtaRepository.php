@@ -29,7 +29,7 @@ class KtaRepository
         }
         $data = $query->paginate($request->size);
 
-        return [200, KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()])];
+        return KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()]);
     }
 
     public function getKtaById($id)

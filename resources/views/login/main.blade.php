@@ -29,12 +29,12 @@
                     <h2 class="text-2xl font-bold text-center intro-x xl:text-3xl xl:text-left">Sign In</h2>
                     <div class="mt-2 text-center intro-x text-slate-400 xl:hidden">A few more clicks to sign in to your account. Manage all your card membership data in one place</div>
                     <div class="mt-8 intro-x">
-                        <form id="login-form">
-                            <input id="email" type="text" class="block px-4 py-3 intro-x login__input form-control" placeholder="Email" value="admin@gmail.com">
+                        <form id="login-form" action="{{ route('login.check') }}" method="POST">
+                            @csrf
+                            <input id="email" name="email" type="text" class="block px-4 py-3 intro-x login__input form-control" placeholder="Email" value="admin@gmail.com">
                             <div id="error-email" class="mt-2 login__input-error text-danger"></div>
-                            <input id="password" type="password" class="block px-4 py-3 mt-4 intro-x login__input form-control" placeholder="Password" value="password">
+                            <input id="password" name="password" type="password" class="block px-4 py-3 mt-4 intro-x login__input form-control" placeholder="Password" value="password">
                             <div id="error-password" class="mt-2 login__input-error text-danger"></div>
-                        </form>
                     </div>
                     <div class="flex mt-4 text-xs intro-x text-slate-600 dark:text-slate-500 sm:text-sm">
                         <div class="flex items-center mr-auto">
@@ -44,8 +44,9 @@
                         <a href="">Forgot Password?</a>
                     </div>
                     <div class="mt-5 text-center intro-x xl:mt-8 xl:text-left">
-                        <button id="btn-login" class="w-full px-4 py-3 align-top btn btn-primary xl:w-32 xl:mr-3">Login</button>
+                        <button type="submit" class="w-full px-4 py-3 align-top btn btn-primary xl:w-32 xl:mr-3">Login</button>
                     </div>
+                </form>
                 </div>
             </div>
             <!-- END: Login Form -->

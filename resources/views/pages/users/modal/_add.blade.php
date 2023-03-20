@@ -9,7 +9,7 @@
                 <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-slate-400"></i> </a>
             </div>
             <div class="p-0 modal-body">
-                <form action="{{ route('users.store') }}" id="user-form" method="POST" enctype="multipart/form-data" class="d-inline-block">
+                <form action="{{ route('users.store') }}" id="users-form" method="POST" enctype="multipart/form-data" class="d-inline-block">
                     @csrf
                     <div class="grid grid-cols-12 gap-4 modal-body gap-y-3">
 

@@ -15,6 +15,7 @@
         <script src="{{ asset('assets/js/custom.js') }}"></script>
         <script src="https://kta.ppal.or.id/js/bluebird.js"></script>
         <script src="https://kta.ppal.or.id/js/html2canvas.min.js"></script>
+        <script type="module" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
         <!-- END: JS Assets-->
 
         @yield('script')

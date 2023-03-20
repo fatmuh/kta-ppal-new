@@ -55,7 +55,7 @@
                                     <label for="" class="form-label">Golongan Darah</label> <code class="text-danger">*</code>
                                     <div class="">
                                         <select class="form-control" id="gol_darah" name="gol_darah" required="">
-                                            <option value="-">-</option>
+                                            <option value="">-</option>
                                             <option value="A">A</option>
                                             <option value="A+">A+</option>
                                             <option value="B">B</option>

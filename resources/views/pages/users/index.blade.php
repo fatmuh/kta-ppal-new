@@ -45,4 +45,6 @@
     <script type="module">
         TabulatorUser("{{ route('users.tabulator') }}")
     </script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\UserRequest', '#users-form'); !!}
 @endsection

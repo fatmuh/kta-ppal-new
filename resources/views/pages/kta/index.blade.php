@@ -75,4 +75,6 @@
     <script type="module">
         TabulatorKta("{{ route('kta.tabulator') }}")
     </script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\KtaRequest', '#kta-form'); !!}
 @endsection

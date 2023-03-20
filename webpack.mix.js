@@ -27,3 +27,6 @@ mix.js("resources/js/app.js", "public/dist/js")
     .copyDirectory("resources/json", "public/dist/json")
     .copyDirectory("resources/fonts", "public/dist/fonts")
     .copyDirectory("resources/images", "public/dist/images");
+
+    mix.copy('vendor/proengsoft/laravel-jsvalidation/resources/views', 'resources/views/vendor/jsvalidation')
+    .copy('vendor/proengsoft/laravel-jsvalidation/public', 'public/vendor/jsvalidation');

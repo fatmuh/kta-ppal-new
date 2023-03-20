@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/{id}/detail', 'detail')->name('detail');
         Route::post('/{id}/update', 'update')->name('update');
         Route::get('/{id}/front', 'front')->name('front');
+        Route::get('/{id}/back', 'back')->name('back');
     });
 
     Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function () {

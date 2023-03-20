@@ -71006,7 +71006,7 @@ function TabulatorKta(url) {
         print: false,
         download: false,
         formatter: function formatter(cell, formatterParams) {
-          return "<div class=\"lg:justify-center items-center\">\n\n                                    <a class=\"btn btn-sm btn-primary w-24 mr-1 mb-2\" onclick=\"detailKtaDepan('".concat(cell.getData().kta_front_url, "')\">\n                                        <i data-lucide=\"credit-card\" class=\"w-4 h-4 mr-1\"></i> Depan\n                                    </a><br>\n\n                                    <a class=\"btn btn-sm btn-dark w-24 mr-1 mb-2\" onclick=\"detailKtaDepan('')\">\n                                        <i data-lucide=\"credit-card\" class=\"w-4 h-4 mr-1\"></i> Belakang\n                                    </a>\n\n                                </div>");
+          return "<div class=\"lg:justify-center items-center\">\n\n                                    <a class=\"btn btn-sm btn-primary w-24 mr-1 mb-2\" onclick=\"detailKtaDepan('".concat(cell.getData().kta_front_url, "')\">\n                                        <i data-lucide=\"credit-card\" class=\"w-4 h-4 mr-1\"></i> Depan\n                                    </a><br>\n\n                                    <a class=\"btn btn-sm btn-dark w-24 mr-1 mb-2\" onclick=\"detailKtaBelakang('").concat(cell.getData().kta_back_url, "')\">\n                                        <i data-lucide=\"credit-card\" class=\"w-4 h-4 mr-1\"></i> Belakang\n                                    </a>\n\n                                </div>");
         }
       }, {
         title: "Action",
@@ -71089,6 +71089,27 @@ function TabulatorKta(url) {
       $("#tabulator-html-filter-value").val("");
       filterHTMLForm();
     });
+    window.detailKtaBelakang = function (url) {
+      console.log(url);
+      var el = document.querySelector("#superlarge-modal-kta-belakang");
+      var modal = tailwind.Modal.getOrCreateInstance(el);
+      $('#kta-belakang-header-title').text('KTA Bagian Belakang');
+      $.ajax({
+        url: url,
+        type: 'GET',
+        datatype: 'html'
+      }).done(function (data) {
+        $("#superlarge-modal-kta-belakang .modal-body").empty().html(data);
+        // LucideGlobal();
+        // DateGlobal();
+        // $('#edit_berjangka_minimum_fund').maskMoney(
+        //     {thousands:'', decimal:'.', allowZero:true}
+        // );
+        modal.toggle();
+      }).fail(function (jqXHR, textStatus, thrownError) {
+        alert('Request failed: ' + textStatus);
+      });
+    };
     window.detailKtaDepan = function (url) {
       console.log(url);
       var el = document.querySelector("#superlarge-modal-kta-depan");

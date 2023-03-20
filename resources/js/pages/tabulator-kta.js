@@ -102,7 +102,7 @@ function TabulatorKta(url) {
                                         <i data-lucide="credit-card" class="w-4 h-4 mr-1"></i> Depan
                                     </a><br>
 
-                                    <a class="btn btn-sm btn-dark w-24 mr-1 mb-2" onclick="detailKtaDepan('')">
+                                    <a class="btn btn-sm btn-dark w-24 mr-1 mb-2" onclick="detailKtaBelakang('${cell.getData().kta_back_url}')">
                                         <i data-lucide="credit-card" class="w-4 h-4 mr-1"></i> Belakang
                                     </a>
 
@@ -224,6 +224,30 @@ function TabulatorKta(url) {
             $("#tabulator-html-filter-value").val("");
             filterHTMLForm();
         });
+
+        window.detailKtaBelakang = function(url){
+            console.log(url);
+            const el = document.querySelector("#superlarge-modal-kta-belakang");
+            const modal = tailwind.Modal.getOrCreateInstance(el);
+            $('#kta-belakang-header-title').text('KTA Bagian Belakang');
+
+            $.ajax({
+                url,
+                type: 'GET',
+                datatype: 'html',
+            })
+            .done(function (data) {
+                $("#superlarge-modal-kta-belakang .modal-body").empty().html(data)
+                // LucideGlobal();
+                // DateGlobal();
+                // $('#edit_berjangka_minimum_fund').maskMoney(
+                //     {thousands:'', decimal:'.', allowZero:true}
+                // );
+                modal.toggle();
+            }).fail(function (jqXHR, textStatus, thrownError) {
+                alert('Request failed: ' + textStatus)
+            });
+        }
 
         window.detailKtaDepan = function(url){
             console.log(url);

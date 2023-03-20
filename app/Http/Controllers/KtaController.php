@@ -66,4 +66,12 @@ class KtaController extends Controller
             'data' => $data
         ]);
     }
+
+    public function back($id)
+    {
+        list($code, $data) = $this->repository->getDetail($id);
+        return view('pages.kta.modal._backData', [
+            'data' => $data
+        ]);
+    }
 }

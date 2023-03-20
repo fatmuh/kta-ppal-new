@@ -15,7 +15,7 @@ class KtaRepository
 {
     public function getTabulator($request)
     {
-        $query = Kta::all();
+        $query = Kta::latest();
 
         if ($request->has('filter')) {
             $reqFilter = $request->get('filter');
@@ -27,9 +27,9 @@ class KtaRepository
                 }
             }
         }
-        $data = $query->last()->paginate($request->size);
+        $data = $query->paginate($request->size);
 
-        return KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()]);
+        return [200, KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()])];
     }
 
     public function getKtaById($id)

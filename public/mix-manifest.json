@@ -85,5 +85,14 @@
     "/dist/images/profile-7.jpg": "/dist/images/profile-7.jpg",
     "/dist/images/profile-8.jpg": "/dist/images/profile-8.jpg",
     "/dist/images/profile-9.jpg": "/dist/images/profile-9.jpg",
-    "/dist/images/woman-illustration.svg": "/dist/images/woman-illustration.svg"
+    "/dist/images/woman-illustration.svg": "/dist/images/woman-illustration.svg",
+    "/resources/views/vendor/jsvalidation/bootstrap.php": "/resources/views/vendor/jsvalidation/bootstrap.php",
+    "/resources/views/vendor/jsvalidation/bootstrap4.php": "/resources/views/vendor/jsvalidation/bootstrap4.php",
+    "/resources/views/vendor/jsvalidation/bootstrap5.php": "/resources/views/vendor/jsvalidation/bootstrap5.php",
+    "/resources/views/vendor/jsvalidation/tailwindcss.php": "/resources/views/vendor/jsvalidation/tailwindcss.php",
+    "/resources/views/vendor/jsvalidation/uikit.php": "/resources/views/vendor/jsvalidation/uikit.php",
+    "/vendor/jsvalidation/js/jsvalidation.js": "/vendor/jsvalidation/js/jsvalidation.js",
+    "/vendor/jsvalidation/js/jsvalidation.js.map": "/vendor/jsvalidation/js/jsvalidation.js.map",
+    "/vendor/jsvalidation/js/jsvalidation.min.js": "/vendor/jsvalidation/js/jsvalidation.min.js",
+    "/vendor/jsvalidation/js/jsvalidation.min.js.map": "/vendor/jsvalidation/js/jsvalidation.min.js.map"
 }

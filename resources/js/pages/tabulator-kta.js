@@ -1,5 +1,5 @@
 import { createIcons, icons } from "lucide";
-import Tabulator from "tabulator-tables";
+import {TabulatorFull as Tabulator} from 'tabulator-tables';
 import Swal from 'sweetalert2';
 import * as xlsx from 'xlsx';
 
@@ -11,26 +11,18 @@ function TabulatorKta(url) {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         let table = new Tabulator("#tabulator-kta", {
             ajaxURL: url,
-            // ajaxFiltering: true,
-            ajaxSorting: true,
-            printAsHtml: true,
-            printStyled: true,
-            pagination: "remote",
+            ajaxContentType:"json",
+            pagination:true, //enable pagination
+            paginationMode:"remote", //enable remote pagination
             paginationSize: 10,
-            paginationSizeSelector: [10, 20, 30, 40],
+            paginationSizeSelector: [10, 30, 50, 100],
             filterMode:"remote",
+            // sortMode:"remote",
             layout: "fitColumns",
             responsiveLayout: "collapse",
-            placeholder: "No matching records found",
+            placeholder: "No Data records found",
+            paginationCounter:"rows",
             columns: [
-                {
-                    formatter: "responsiveCollapse",
-                    width: 40,
-                    minWidth: 30,
-                    hozAlign: "center",
-                    resizable: false,
-                    headerSort: false,
-                },
 
                 // For HTML table
                 {
@@ -124,6 +116,7 @@ function TabulatorKta(url) {
                                     <a href="${cell.getData().detail_url}" class="detail-sisuka flex items-center text-amber-600 mr-3" >
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
+
                                     <a href="javascript: void(0);" class="flex items-center text-danger" onclick="deleteConfirm('delete-kta-form-${cell.getData().id}')">
 
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete</a>

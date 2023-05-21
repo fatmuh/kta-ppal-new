@@ -1,5 +1,5 @@
 import { createIcons, icons } from "lucide";
-import Tabulator from "tabulator-tables";
+import {TabulatorFull as Tabulator} from 'tabulator-tables';
 import Swal from 'sweetalert2';
 import * as xlsx from 'xlsx';
 
@@ -9,7 +9,7 @@ function TabulatorUser(url) {
     if ($("#tabulator-users").length) {
         // Setup Tabulator
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        let table = new Tabulator("#tabulator-users", {
+        let table = new TabulatorFull("#tabulator-users", {
             ajaxURL: url,
             // ajaxFiltering: true,
             ajaxSorting: true,

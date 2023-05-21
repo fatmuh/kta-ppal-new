@@ -21,15 +21,13 @@ class KtaRepository
             $reqFilter = $request->get('filter');
             foreach ($reqFilter as $filter) {
                 if($filter['field'] == 'full_name' && $filter['value']) {
-                    $query = $query->where(function ($qq) use ($filter) {
-                        $qq->where('full_name', 'like', '%' . $filter['value'] . '%');
-                    });
+                    $query = $query->where('full_name', 'like', '%' .$filter['value']. '%');
                 }
             }
         }
         $data = $query->paginate($request->size);
 
-        return KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()]);
+        return [200, KtaCollection::collection($data)->additional(['last_page' => $data->lastPage()])];
     }
 
     public function getKtaById($id)

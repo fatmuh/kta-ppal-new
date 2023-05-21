@@ -16,7 +16,8 @@ class KtaController extends Controller
 
     public function tabulator(Request $request)
     {
-        return $this->repository->getTabulator($request);
+        list($code, $data) = $this->repository->getTabulator($request);
+        return $data;
     }
 
     public function index(Request $request)

@@ -1,5 +1,5 @@
 import { createIcons, icons } from "lucide";
-import Tabulator from "tabulator-tables";
+import {TabulatorFull as Tabulator} from 'tabulator-tables';
 
 (function () {
     "use strict";
@@ -9,7 +9,7 @@ import Tabulator from "tabulator-tables";
         // Setup Tabulator
         let table = new Tabulator("#tabulator", {
             ajaxURL: "https://dummy-data.left4code.com",
-            ajaxFiltering: true,
+            // ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,
             printStyled: true,
